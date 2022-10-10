@@ -19,7 +19,9 @@ function Home({ getAllPersons, persons }) {
   const [currentPerson, setCurrentPerson] = useState([]);
   let navigate = useNavigate();
 
-  useEffect(() => getAllPersons(), []);
+  useEffect(() => {
+    getAllPersons()
+  }, []);
 
   function handleClick() {
     navigate("/add");

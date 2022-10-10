@@ -1,6 +1,6 @@
 import { call, put, takeEvery, all } from "redux-saga/effects";
 import axios from "axios";
-import { GET_ALL_PERSONS, GET_ALL_PERSONS_FAILURE, GET_ALL_PERSONS_SUCCESS, GET_PERSON_BY_ID, GET_PERSON_BY_ID_FAILURE, GET_PERSON_BY_ID_SUCCESS } from "../actions/types";
+import { ADD_PERSON, ADD_PERSON_FAILURE, ADD_PERSON_SUCCESS, GET_ALL_PERSONS, GET_ALL_PERSONS_FAILURE, GET_ALL_PERSONS_SUCCESS, GET_PERSON_BY_ID, GET_PERSON_BY_ID_FAILURE, GET_PERSON_BY_ID_SUCCESS } from "../actions/types";
 
 const apiUrl = "http://localhost:8080/persons";
 
@@ -22,6 +22,19 @@ function* getAllPersons(action) {
   }
 }
 
+function* addPerson(action) {
+  try {
+    const person = yield call(axios, {
+      method: "POST",
+      url: apiUrl,
+      data: action.payload
+    });
+    yield put({ type: ADD_PERSON_SUCCESS, payload: person });
+  } catch (e) {
+    yield put({ type: ADD_PERSON_FAILURE, message: e.message });
+  }
+}
+
 function* watchGetPerson() {
   yield takeEvery(GET_PERSON_BY_ID, getPersonById);
 }
@@ -30,6 +43,10 @@ function* watchGetAllPersons() {
   yield takeEvery(GET_ALL_PERSONS, getAllPersons);
 }
 
+function* watchAddPerson() {
+  yield takeEvery(ADD_PERSON, addPerson);
+}
+
 export default function* rootSaga() {
-  yield all([watchGetPerson(), watchGetAllPersons()]);
+  yield all([watchGetPerson(), watchGetAllPersons(), watchAddPerson()]);
 }
