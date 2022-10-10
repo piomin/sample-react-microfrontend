@@ -27,6 +27,10 @@ function Home({ getAllPersons, persons }) {
     navigate("/add");
   }
 
+  function handleSelection(p, e) {
+    navigate("/details/" + p.id);
+  }
+
   return(
     
       <Stack spacing={2}>
@@ -38,6 +42,7 @@ function Home({ getAllPersons, persons }) {
             rows={persons}
             columns={columns}
             pageSize={5}
+            onRowDoubleClick={handleSelection}
           />
         </div>
       </Stack>

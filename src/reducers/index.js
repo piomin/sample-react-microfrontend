@@ -1,4 +1,4 @@
-import { ADD_PERSON_SUCCESS, GET_ALL_PERSONS_SUCCESS, ADD_PERSON } from "../actions/types";
+import { ADD_PERSON_SUCCESS, GET_ALL_PERSONS_SUCCESS, ADD_PERSON, GET_PERSON_BY_ID_SUCCESS } from "../actions/types";
 
 const initialState = {
   persons: [],
@@ -24,6 +24,10 @@ function rootReducer(state = initialState, action) {
     return {
       person: action.payload.data,
       newPersonId: null
+    };
+  } else if (action.type === GET_PERSON_BY_ID_SUCCESS) {
+    return {
+      person: action.payload.data,
     };
   }
   return state;
