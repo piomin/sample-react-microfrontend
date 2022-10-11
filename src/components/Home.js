@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Button, Stack } from "@mui/material";
@@ -16,7 +16,6 @@ const columns = [
 
 function Home({ getAllPersons, persons }) {
 
-  const [currentPerson, setCurrentPerson] = useState([]);
   let navigate = useNavigate();
 
   useEffect(() => {
@@ -32,21 +31,19 @@ function Home({ getAllPersons, persons }) {
   }
 
   return(
-    
-      <Stack spacing={2}>
-        <Stack direction="row">
-          <Button variant="outlined" onClick={handleClick}>Add person</Button>
-        </Stack>
-        <div style={{ height: 400, width: '100%' }}>
-          <DataGrid
-            rows={persons}
-            columns={columns}
-            pageSize={5}
-            onRowDoubleClick={handleSelection}
-          />
-        </div>
+    <Stack spacing={2}>
+      <Stack direction="row">
+        <Button variant="outlined" onClick={handleClick}>Add person</Button>
       </Stack>
-    
+      <div style={{ height: 400, width: '100%' }}>
+        <DataGrid
+          rows={persons}
+          columns={columns}
+          pageSize={5}
+          onRowDoubleClick={handleSelection}
+        />
+      </div>
+    </Stack>
   );
 }
 

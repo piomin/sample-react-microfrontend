@@ -3,8 +3,7 @@ import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 import {
   createBrowserRouter,
-  RouterProvider,
-  Route,
+  RouterProvider
 } from "react-router-dom";
 import store from "./store/index";
 import Home from "./components/Home";
@@ -20,7 +19,7 @@ const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "add",
+    path: "/add",
     element: <AddPerson />,
   },
   {
