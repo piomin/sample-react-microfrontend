@@ -1,5 +1,4 @@
 import { connect } from "react-redux";
-import React, { useEffect } from "react";
 import { Form } from "react-router-dom";
 import { TextField, Button, MenuItem, Alert, Grid } from "@mui/material"
 
@@ -22,8 +21,6 @@ function AddPerson({ addPerson, person, newPersonId }) {
   function handleClick(e) {
     addPerson(person);
   }
-
-  // useEffect(() => setDataTags(tags), [newPersonId]);
 
   return(
     <Form method="post">
@@ -60,10 +57,10 @@ function mapStateToProps(state) {
     };
   }
   
-  function mapDispatchToProps(dispatch) {
-    return {
-      addPerson: (payload) => dispatch(addPerson(payload)),
-    };
-  }
-  
-  export default connect(mapStateToProps, mapDispatchToProps)(AddPerson);
+function mapDispatchToProps(dispatch) {
+  return {
+    addPerson: (payload) => dispatch(addPerson(payload)),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddPerson);
