@@ -1,4 +1,8 @@
-import { ADD_PERSON_SUCCESS, GET_ALL_PERSONS_SUCCESS, ADD_PERSON, GET_PERSON_BY_ID_SUCCESS } from "../actions/types";
+import { 
+  ADD_PERSON,
+  ADD_PERSON_SUCCESS, 
+  GET_ALL_PERSONS_SUCCESS, 
+  GET_PERSON_BY_ID_SUCCESS } from "../actions/types";
 
 const initialState = {
   persons: [],
@@ -7,30 +11,36 @@ const initialState = {
 };
 
 function rootReducer(state = initialState, action) {
-  if (action.type === GET_ALL_PERSONS_SUCCESS) {
-    return {
-      persons: action.payload.data,
-    };
-  } else if (action.type === ADD_PERSON_SUCCESS) {
-    return {
-      person: {
-        name: "",
-        gender: "",
-        age: 0
-      },
-      newPersonId: action.payload.data.id,
-    };
-  } else if (action.type === ADD_PERSON) {
-    return {
-      person: action.payload.data,
-      newPersonId: null
-    };
-  } else if (action.type === GET_PERSON_BY_ID_SUCCESS) {
-    return {
-      person: action.payload.data,
-    };
+  switch(action.type) {
+    case GET_ALL_PERSONS_SUCCESS:
+      return {
+        ...state,
+        persons: action.payload.data
+      };
+    case ADD_PERSON:
+      return {
+        ...state,
+        person: action.payload.data,
+        newPersonId: null
+      };
+    case ADD_PERSON_SUCCESS:
+      return {
+        ...state,
+        person: {
+          name: "",
+          gender: "",
+          age: 0
+        },
+        newPersonId: action.payload.data.id
+      };
+    case GET_PERSON_BY_ID_SUCCESS:
+      return {
+        ...state,
+        person: action.payload.data
+      };
+    default:
+      return state;
   }
-  return state;
 }
 
 export default rootReducer;
