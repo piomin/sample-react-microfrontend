@@ -1,4 +1,5 @@
 import { call, put, takeEvery, all } from "redux-saga/effects";
+
 import axios from "axios";
 import { 
   ADD_PERSON, 
@@ -11,7 +12,7 @@ import {
   GET_PERSON_BY_ID_FAILURE, 
   GET_PERSON_BY_ID_SUCCESS } from "../actions/types";
 
-const apiUrl = process.env.BACKEND_URL != null ? "http://" + process.env.BACKEND_URL + "/persons" : "http://localhost:8080/persons";
+const apiUrl = process.env.REACT_APP_BACKEND_URL != null ? "http://" + process.env.REACT_APP_BACKEND_URL + "/persons" : "http://localhost:8080/persons";
 
 function* getPersonById(action) {
   try {
