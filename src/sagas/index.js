@@ -11,7 +11,7 @@ import {
   GET_PERSON_BY_ID_FAILURE, 
   GET_PERSON_BY_ID_SUCCESS } from "../actions/types";
 
-const apiUrl = "http://localhost:8080/persons";
+const apiUrl = process.env.BACKEND_URL != null ? "http://" + process.env.BACKEND_URL + "/persons" : "http://localhost:8080/persons";
 
 function* getPersonById(action) {
   try {
