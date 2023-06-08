@@ -13,6 +13,7 @@
     "@mui/material": "5.10.8",
     "@mui/x-data-grid": "latest",
     "axios": "1.1.2",
+    "jest": "^27.5.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-redux": "8.0.2",
