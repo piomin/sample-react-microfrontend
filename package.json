@@ -1,5 +1,5 @@
 {
-  "name": "react",
+  "name": "sample-node-react",
   "version": "1.0.0",
   "description": "React Micro Frontend",
   "keywords": [
@@ -13,6 +13,7 @@
     "@mui/material": "5.10.8",
     "@mui/x-data-grid": "latest",
     "axios": "1.1.2",
+    "nodeshift": "^8.7.0",
     "jest": "^27.5.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -27,6 +28,7 @@
     "typescript": "4.1.3"
   },
   "scripts": {
+    "openshift": "nodeshift --expose --dockerImage=registry.access.redhat.com/ubi8/nodejs-18 --deploy.env REACT_APP_BACKEND_URL=person-service:8080",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
