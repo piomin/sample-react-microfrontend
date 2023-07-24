@@ -1,0 +1,44 @@
+{
+  "name": "sample-node-react",
+  "version": "1.0.0",
+  "description": "React Micro Frontend",
+  "keywords": [
+    "react",
+    "starter"
+  ],
+  "main": "src/index.js",
+  "proxy": "http://localhost:3000",
+  "dependencies": {
+    "@emotion/react": "11.10.4",
+    "@emotion/styled": "11.10.4",
+    "@mui/material": "5.10.8",
+    "@mui/x-data-grid": "latest",
+    "axios": "1.1.2",
+    "jest": "^27.5.1",
+    "nodeshift": "^10.0.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-redux": "8.0.2",
+    "react-router-dom": "6.4.2",
+    "react-scripts": "5.0.1",
+    "redux": "4.2.0",
+    "redux-saga": "1.2.1"
+  },
+  "devDependencies": {
+    "@babel/runtime": "7.13.8",
+    "typescript": "4.1.3"
+  },
+  "scripts": {
+    "openshift": "nodeshift --expose --dockerImage=registry.access.redhat.com/ubi8/nodejs-18 --deploy.port 3000 --deploy.env REACT_APP_BACKEND_URL=person-service:8080",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
