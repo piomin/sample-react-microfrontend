@@ -12,6 +12,8 @@ jobs:
       - checkout
       - node/install-packages
       - run:
+          command: npm -v
+      - run:
           command: npm run test
           
 workflows:
