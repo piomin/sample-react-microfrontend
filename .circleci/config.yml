@@ -6,6 +6,5 @@ orbs:
 workflows:
   build:
     jobs:
-      - node/test:
-          version: '18.18'
-          pkg-manager: npm
+      - node/run:
+          npm-run: build
