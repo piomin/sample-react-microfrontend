@@ -11,6 +11,7 @@ jobs:
       - node/install-packages:
           pkg-manager: npm
           override-ci-command: npm install
+          with-cache: false
       # - run:
       #     command: npm run test
       #     name: Run tests
